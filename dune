@@ -1,2 +1,3 @@
 (executable
- (name ocamlnotes))
+ (name ocamlnotes)
+ (libraries ninetynine))
