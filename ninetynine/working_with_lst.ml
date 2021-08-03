@@ -13,3 +13,24 @@ let rec last_two = function
 
 
 (* Find the K'th element of a list. *)
+let rec at k = function
+  | [] -> None
+  | h :: t -> if k = 1 then Some h else at (k - 1) t
+
+
+(* Find the number of elements of a list *)
+let rec length = function
+  | [] -> 0
+  | _ :: t -> length t + 1
+
+
+(* Reverse a list *)
+(* 
+  simple recursive implementation requires `append` operation,
+  so we need change the calculation direction.  
+*)
+let rev lst = 
+  let rec inner acc = function
+    | [] -> acc 
+    | h :: t -> inner (h :: acc) t 
+  in  inner [] lst
