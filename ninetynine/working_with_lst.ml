@@ -55,4 +55,11 @@ let rec flatten = function
   | Many ((Many l) :: t) -> (flatten (Many l)) @ (flatten (Many t))
 
 (* 8. Eliminate consecutive duplicates of list elements. *)
-
+let rec compress = function
+  | [] -> []
+  | [x] ->[x]
+  | h1 :: h2 :: t -> 
+      let l = h2 :: t  in 
+        if h1 = h2 
+          then compress l 
+          else h1 :: compress l
