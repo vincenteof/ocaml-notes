@@ -63,3 +63,13 @@ let rec compress = function
         if h1 = h2 
           then compress l 
           else h1 :: compress l
+
+(* 9. Pack consecutive duplicates of list elements into sublists. *)
+let rec pack lst = 
+  let rec inner cur acc = function
+    | [] -> acc
+    | h :: t -> 
+      match cur with
+        | [] -> inner [h] acc t
+        | cur_h :: cur_t -> if h = cur_h then inner (cur_h :: cur) acc cur_t else inner [cur_h] (cur :: acc) cur_t
+  in (inner [] [] lst) |> rev
