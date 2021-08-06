@@ -65,7 +65,7 @@ let rec compress = function
           else h1 :: compress l
 
 (* 9. Pack consecutive duplicates of list elements into sublists. *)
-let rec pack lst = 
+let pack lst = 
   let rec inner cur acc = function
     | [] -> acc
     | h :: t -> 
@@ -73,3 +73,21 @@ let rec pack lst =
         | [] -> inner [h] acc t
         | cur_h :: cur_t -> if h = cur_h then inner (cur_h :: cur) acc cur_t else inner [cur_h] (cur :: acc) cur_t
   in (inner [] [] lst) |> rev
+
+(* 10. Run-length encoding of a list.  *)
+let encode lst = lst
+  |> pack
+  |> List.map (fun grp -> (length grp, List.hd grp)) 
+
+(* 11. Modified run-length encoding. *)
+type 'a rle = 
+  | One of 'a
+  | Many of int * 'a
+
+let encode_to_rle lst = lst
+  |> pack
+  |> 
+    let f = function
+      | [x] -> One x
+      | lst -> Many (length lst, List.hd lst) 
+    in List.map f
