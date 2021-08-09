@@ -91,3 +91,11 @@ let encode_to_rle lst = lst
       | [x] -> One x
       | lst -> Many (length lst, List.hd lst) 
     in List.map f
+
+(* 12. Decode a run-length encoded list. *)
+let rec decode = function
+  | [] -> []
+  | One x :: t -> x :: decode t
+  | Many (num, x) :: t ->  
+    let rest = if num = 2 then One x :: t else Many (num - 1 , x) :: t 
+    in x :: decode rest
