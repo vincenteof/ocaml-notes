@@ -108,7 +108,37 @@ let rec decode = function
 let replicate lst n = 
   let rec replicate_inner acc cur_l m = 
     match (cur_l, m) with
-    | ([], 0) -> acc
-    | ([], inner_m) -> replicate_inner acc lst (inner_m - 1)
-    | (h :: t, inner_m) -> replicate_inner (h :: acc) t inner_m
+      | ([], 0) -> acc
+      | ([], inner_m) -> replicate_inner acc lst (inner_m - 1)
+      | (h :: t, inner_m) -> replicate_inner (h :: acc) t inner_m
   in rev (replicate_inner [] lst n)
+
+(* 16. Drop every N'th element from a list. *)
+let drop lst n = 
+  let rec drop_inner c acc = function
+    | [] -> acc
+    | h :: t -> 
+        if c = 1 
+          then drop_inner n acc t 
+          else drop_inner (c - 1) (h :: acc) t
+  in drop_inner n [] lst 
+
+(* 17. Split a list into two parts; the length of the first part is given.  *)
+let split lst n = 
+  let rec split_inner c acc = function
+    | [] -> (rev acc, [])
+    | (h :: t) as l -> 
+        if c = 0
+          then (rev acc, l) 
+          else split_inner (c - 1) (h :: acc) t 
+  in split_inner n [] lst
+
+(* 18. Extract a slice from a list. *)
+let slice lst l r = 
+  let rec slice_inner p acc = function
+    | [] -> rev acc
+    | (h :: t) as cur_l -> 
+      if p < l then slice_inner (p + 1) acc cur_l
+      else if p >= r then rev acc
+      else slice_inner (p + 1) (h :: acc) t
+  in slice_inner 0 [] lst
