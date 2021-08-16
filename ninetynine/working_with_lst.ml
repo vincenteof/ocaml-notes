@@ -126,3 +126,14 @@ let slice lst l r =
         else slice_inner (p + 1) (h :: acc) t
   in
   slice_inner 0 [] lst
+
+(* 19. Rotate a list N places to the left. *)
+let rotate lst poses =
+  let parts =
+    let lst_len = length lst in
+    let split_len =
+      if poses > 0 then poses mod lst_len else -poses mod lst_len
+    in
+    split lst split_len
+  in
+  match parts with l1, l2 -> l2 @ l1
