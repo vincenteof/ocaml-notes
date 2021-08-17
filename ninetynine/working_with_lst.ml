@@ -137,3 +137,19 @@ let rotate lst poses =
     split lst split_len
   in
   match parts with l1, l2 -> l2 @ l1
+
+(* 20. Remove the K'th element from a list. *)
+let rec remove_at pos = function
+  | [] -> []
+  | h :: t -> if pos = 0 then t else h :: remove_at (pos - 1) t
+
+(* 21. Insert an element at a given position into a list. *)
+let rec insert_at e pos = function
+  | [] -> []
+  | h :: t as l -> if pos = 0 then e :: l else h :: insert_at e (pos - 1) t
+
+(* 22. Create a list containing all integers within a given range. *)
+let rec range l r =
+  if l = r then [ l ]
+  else if l > r then l :: range (l - 1) r
+  else l :: range (l + 1) r
