@@ -153,3 +153,25 @@ let rec range l r =
   if l = r then [ l ]
   else if l > r then l :: range (l - 1) r
   else l :: range (l + 1) r
+
+(* 23. Extract a given number of randomly selected elements from a list. *)
+let rand_select lst num =
+  let rec pick pos prev = function
+    | [] -> None
+    | h :: t ->
+        if pos = 0 then Some (h, rev prev @ t) else pick (pos - 1) (h :: prev) t
+  in
+  let rec inner n selected = function
+    | [] -> selected
+    | l -> (
+        match pick (Random.int n) [] l with
+        | Some (picked, rest) -> inner (n - 1) (picked :: selected) rest
+        | _ -> selected)
+  in
+  inner num [] lst
+
+(* 24. Lotto: Draw N different random numbers from the set 1..M. *)
+let lotto_select n m = rand_select (range 1 m) n
+
+(* 25. Generate a random permutation of the elements of a list. *)
+let permutation lst = rand_select lst (length lst)
