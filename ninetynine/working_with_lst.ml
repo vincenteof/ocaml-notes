@@ -175,3 +175,14 @@ let lotto_select n m = rand_select (range 1 m) n
 
 (* 25. Generate a random permutation of the elements of a list. *)
 let permutation lst = rand_select lst (length lst)
+
+(* 26. Generate the combinations of K distinct objects chosen from the N elements of a list. *)
+let rec extract num = function
+  | [] -> []
+  | h :: t ->
+      if num = 0 then []
+      else
+        let l1 = extract (num - 1) t in
+        let l2 = extract num t in
+        let mapped_l1 = List.map (fun x -> h :: x) l1 in
+        mapped_l1 @ l2

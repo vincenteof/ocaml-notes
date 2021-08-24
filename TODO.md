@@ -22,3 +22,4 @@ It seems an syntax error.
 
 ### how to work with ocaml module? interface and implementation?
 
+### In many cases, recursion is almost the same as math definition, and it is good. Bur in real problems, we also need to use tail-recursion to replace simple recursion, and it is a bit annoying. How to avoid it?
