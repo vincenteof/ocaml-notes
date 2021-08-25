@@ -22,3 +22,7 @@ It seems an syntax error.
 
 ### how to work with ocaml module? interface and implementation?
 
+### how to do testing?
+I found 2 testing frameworks which seem easy to use, `alcotest` and `ounit`. `alcotest` seems more modern. These two libraries can both be integrated with some property testing framework.
+
+### how does `dune` works? I want to add some testing with testing frameworks dependency.
