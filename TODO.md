@@ -23,3 +23,8 @@ It seems an syntax error.
 ### how to work with ocaml module? interface and implementation?
 
 ### In many cases, recursion is almost the same as math definition, and it is good. Bur in real problems, we also need to use tail-recursion to replace simple recursion, and it is a bit annoying. How to avoid it?
+
+### how to do testing?
+I found 2 testing frameworks which seem easy to use, `alcotest` and `ounit`. `alcotest` seems more modern. These two libraries can both be integrated with some property testing framework.
+
+### how does `dune` works? I want to add some testing with testing frameworks dependency.
