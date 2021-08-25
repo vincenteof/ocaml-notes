@@ -27,4 +27,13 @@ It seems an syntax error.
 ### how to do testing?
 I found 2 testing frameworks which seem easy to use, `alcotest` and `ounit`. `alcotest` seems more modern. These two libraries can both be integrated with some property testing framework.
 
-### how does `dune` works? I want to add some testing with testing frameworks dependency.
+### how does `dune` work? I want to add some testing with testing frameworks dependency (test suits for module). 
+[dune quick start guide](https://dune.readthedocs.io/en/latest/quick-start.html)
+[how to add tests to a project](https://ocaml-explore.netlify.app/workflows/adding-unit-tests-to-your-project/)
+
+### does `dune` has some concept like `parent dependency`? Like we define an dependency in the outmost dune file, can we use this dependency in inner module?
+
+### how to add dependency to a dune project?
+First, `opam install xxx`. Then add `xxx` to your `libraries` field of dune file.
+
+
