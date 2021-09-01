@@ -27,6 +27,9 @@ It seems an syntax error.
 ### how to do testing?
 I found 2 testing frameworks which seem easy to use, `alcotest` and `ounit`. `alcotest` seems more modern. These two libraries can both be integrated with some property testing framework.
 
+### how to use `alcotest`?
+First, you should write all tests for you module using `Alcotest.check`, then run all test cases using `Alcotest.run`.
+
 ### how does `dune` work? I want to add some testing with testing frameworks dependency (test suits for module). 
 [dune quick start guide](https://dune.readthedocs.io/en/latest/quick-start.html)
 [how to add tests to a project](https://ocaml-explore.netlify.app/workflows/adding-unit-tests-to-your-project/)
@@ -36,4 +39,4 @@ I found 2 testing frameworks which seem easy to use, `alcotest` and `ounit`. `al
 ### how to add dependency to a dune project?
 First, `opam install xxx`. Then add `xxx` to your `libraries` field of dune file.
 
-
+### what's the difference between `["a", "c", "c"]` and `["a"; "c"; "c"]`?
